@@ -1,2 +1,1 @@
-### Hexlet tests and linter status:
-[![Actions Status](https://github.com/podolyak-tatyana/qa-auto-engineer-java-project-90/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/podolyak-tatyana/qa-auto-engineer-java-project-90/actions)
+todo
