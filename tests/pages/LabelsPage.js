@@ -1,5 +1,3 @@
-import {expect} from "@playwright/test";
-
 /** Страница лейблов */
 export class LabelsPage {
     constructor(page) {

@@ -84,11 +84,11 @@ test("Удаление всех статусов", async ({ page }) => {
     await login(page);
     const statusesPage = new StatusesPage(page);
 
-    await page.goto("/#/task_statuses");
+    await statusesPage.goto();
     if (await page.locator("#main-content").count() === 0) return;
 
-    await page.getByRole("checkbox", { name: "Select all" }).locator("..").click();
-    await page.getByLabel("Delete").click();
+    await statusesPage.selectAll();
+    await statusesPage.delete();
 
     await expect(page.getByText("No Task statuses yet.")).toBeVisible({ timeout: 10000 });
 });

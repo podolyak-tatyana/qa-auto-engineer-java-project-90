@@ -1,5 +1,3 @@
-import {expect} from "@playwright/test";
-
 /** Страница статусов задач */
 export class StatusesPage {
     constructor(page) {

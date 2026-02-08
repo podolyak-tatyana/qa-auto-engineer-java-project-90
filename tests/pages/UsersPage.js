@@ -1,5 +1,3 @@
-import {expect} from "@playwright/test";
-
 /** Страница пользователей */
 export class UsersPage {
     constructor(page) {
