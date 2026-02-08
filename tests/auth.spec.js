@@ -11,7 +11,7 @@ test("login and logout", async ({ page }) => {
     // Кнопка submit с текстом Sign in
     await page.getByRole("button", { name: /^sign in$/i }).click();
 
-    // ✅ проверяем что реально вошли
+    // проверяем что вошли
     await expect(page.getByText("Welcome to the administration")).toBeVisible();
 
     await page.getByRole("button", { name: "Profile" }).click();
