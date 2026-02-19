@@ -1,9 +1,19 @@
 import { defineConfig } from "@playwright/test";
+import path from "path";
+import { fileURLToPath } from "url";
 
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isCI = !!process.env.CI;
+const withCoverage = !!process.env.COVERAGE;
 
 export default defineConfig({
   testDir: "./tests",
+
+  ...(withCoverage && {
+    workers: 1,
+    globalSetup: path.join(__dirname, "tests", "coverage-setup.js"),
+    globalTeardown: path.join(__dirname, "tests", "coverage-teardown.js"),
+  }),
 
   use: {
     baseURL: "http://localhost:5173",
@@ -31,7 +41,8 @@ export default defineConfig({
   webServer: {
     command: "npm run dev -- --host --port 5173",
     url: "http://localhost:5173",
-    reuseExistingServer: !isCI, // в CI лучше не реюзать
+    reuseExistingServer: !isCI,
     timeout: 120 * 1000,
+    ...(withCoverage && { env: { COVERAGE: "1" } }),
   },
 });

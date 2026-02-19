@@ -1,4 +1,4 @@
-import {expect, test} from "@playwright/test";
+import { expect, test } from "../fixtures.js";
 import {login} from "../helpers/auth.js";
 import {StatusesPage} from "../pages/StatusesPage.js";
 

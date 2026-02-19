@@ -1,6 +1,10 @@
-import {expect} from "@playwright/test";
+import { expect } from "@playwright/test";
 
-const ADMIN = { username: "admin", password: "password" };
+// Учётные данные для тестового окружения (Security Hotspot: не продакшен)
+const ADMIN = {
+    username: process.env.PLAYWRIGHT_TEST_USERNAME || "admin",
+    password: process.env.PLAYWRIGHT_TEST_PASSWORD || "password",
+};
 
 /** Логин в систему */
 export async function login(page) {

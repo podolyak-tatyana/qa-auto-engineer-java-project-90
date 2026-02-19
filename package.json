@@ -9,6 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "test": "playwright test",
+    "test:coverage": "cross-env COVERAGE=1 playwright test",
     "test:headed": "playwright test --headed",
     "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug"
@@ -21,6 +22,11 @@
   "devDependencies": {
     "@eslint/js": "^9.39.1",
     "@playwright/test": "^1.57.0",
+    "istanbul-lib-coverage": "^3.2.0",
+    "istanbul-lib-report": "^3.0.1",
+    "istanbul-reports": "^3.1.7",
+    "cross-env": "^7.0.3",
+    "vite-plugin-istanbul": "^7.2.1",
     "@types/node": "^25.0.9",
     "@types/react": "^19.2.5",
     "@types/react-dom": "^19.2.3",

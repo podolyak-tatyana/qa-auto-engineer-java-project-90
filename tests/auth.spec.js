@@ -1,12 +1,11 @@
-import { test, expect } from "@playwright/test";
+import { test, expect } from "./fixtures.js";
+import { ADMIN } from "./helpers/auth.js";
 
 test("login and logout", async ({ page }) => {
-    // 1) Открываем приложение (если baseURL задан в playwright.config.ts — можно page.goto("/"))
     await page.goto("/");
 
-    // 2) Логин
-    await page.locator('input[name="username"]').fill("admin");
-    await page.locator('input[name="password"]').fill("password");
+    await page.locator('input[name="username"]').fill(ADMIN.username);
+    await page.locator('input[name="password"]').fill(ADMIN.password);
 
     // Кнопка submit с текстом Sign in
     await page.getByRole("button", { name: /^sign in$/i }).click();
