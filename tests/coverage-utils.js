@@ -25,7 +25,9 @@ export function saveCoverage(coverageObject) {
     if (fs.existsSync(OUT_FILE)) {
         try {
             list = JSON.parse(fs.readFileSync(OUT_FILE, "utf8"));
-        } catch (_) {}
+        } catch {
+            list = [];
+        }
         if (!Array.isArray(list)) list = [];
     }
     list.push(coverageObject);
@@ -42,7 +44,7 @@ export async function coverageGlobalTeardown() {
     let list;
     try {
         list = JSON.parse(fs.readFileSync(OUT_FILE, "utf8"));
-    } catch (_) {
+    } catch {
         return;
     }
     if (!Array.isArray(list) || list.length === 0) return;
@@ -58,7 +60,9 @@ export async function coverageGlobalTeardown() {
                 if (fileCov && typeof fileCov === "object") {
                     try {
                         map.addFileCoverage(fileCov);
-                    } catch (_) {}
+                    } catch {
+                        void 0; // пропускаем некорректные записи покрытия
+                    }
                 }
             }
         }
