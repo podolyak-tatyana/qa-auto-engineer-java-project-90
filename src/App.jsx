@@ -1,9 +1,10 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client';
-import App from '@hexlet/testing-task-manager';
+import React from "react";
+import TaskManagerApp from "@hexlet/testing-task-manager";
 
-ReactDOM.createRoot(document.getElementById('root')).render(
-    <React.StrictMode>
-        {App()}
-    </React.StrictMode>
-)
+/** Обёртка приложения для точки входа (покрытие src/) */
+function App() {
+    const AppComponent = TaskManagerApp();
+    return <>{AppComponent}</>;
+}
+
+export default App;

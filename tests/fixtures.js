@@ -8,8 +8,7 @@ const test = base.extend({
             try {
                 const cov = await page.evaluate(() => window.__coverage__);
                 if (cov) saveCoverage(cov);
-            } catch {
-                void 0; // нет __coverage__ (страница без инструментации)
+            } catch { // eslint-disable-line no-empty -- нет __coverage__ (страница без инструментации)
             }
         }
     },

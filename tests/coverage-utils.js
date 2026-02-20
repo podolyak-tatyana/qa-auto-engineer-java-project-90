@@ -25,7 +25,7 @@ export function saveCoverage(coverageObject) {
     if (fs.existsSync(OUT_FILE)) {
         try {
             list = JSON.parse(fs.readFileSync(OUT_FILE, "utf8"));
-        } catch {
+        } catch { // eslint-disable-line no-empty -- при ошибке парсинга используем пустой массив
             list = [];
         }
         if (!Array.isArray(list)) list = [];
@@ -60,8 +60,8 @@ export async function coverageGlobalTeardown() {
                 if (fileCov && typeof fileCov === "object") {
                     try {
                         map.addFileCoverage(fileCov);
-                    } catch {
-                        void 0; // пропускаем некорректные записи покрытия
+                    } catch { // eslint-disable-line no-empty -- пропускаем некорректные записи при слиянии
+                        continue;
                     }
                 }
             }
